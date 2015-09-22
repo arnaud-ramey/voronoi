@@ -741,10 +741,10 @@ protected:
    */
   void thin_guo_hall_original_iter(cv::Mat& im, int iter) {
     cv::Mat marker = cv::Mat::zeros(im.size(), CV_8UC1);
-
-    for (int i = 1; i < im.rows; i++)
+    unsigned int colmax = im.cols -1, rowmax = im.rows - 1;
+    for (int i = 1; i < rowmax; i++)
     {
-      for (int j = 1; j < im.cols; j++)
+      for (int j = 1; j < colmax; j++)
       {
         uchar p2 = im.at<uchar>(i-1, j);
         uchar p3 = im.at<uchar>(i-1, j+1);
