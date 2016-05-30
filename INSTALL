@@ -5,6 +5,7 @@ ________________________________________________________________________________
 You need the following libraries before compiling :
  * cmake  ( sudo apt-get install cmake ),
  * OpenCV ( sudo apt-get install libopencv-dev )
+ * gtest  ( sudo apt-get install libgtest-dev )
 ________________________________________________________________________________
 
 How to build the program
