@@ -1,0 +1,13 @@
+# travis rules for project
+language: cpp
+compiler:
+  - gcc
+
+before_install:
+  # intall deps
+
+script: # compile
+  - mkdir build
+  - cd build
+  - cmake ..
+  - make
