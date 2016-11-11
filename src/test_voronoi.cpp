@@ -3,7 +3,7 @@
   \author      Arnaud Ramey <arnaud.a.ramey@gmail.com>
                 -- Robotics Lab, University Carlos III of Madrid
   \date        2013/9/19
-  
+
 ________________________________________________________________________________
 
 This program is free software: you can redistribute it and/or modify
@@ -167,8 +167,10 @@ void paste_images_gallery(const std::vector<cv::Mat_<T> > & in,
       cv::line(out, roi.tl(), roi.br(), border_color, 2);
       cv::line(out, roi.br(), roi.tl(), border_color, 2);
     }
-    else
-      in[img_idx].copyTo( out(roi) );
+    else {
+      cv::Mat_<T> out_roi = out(roi);
+      in[img_idx].copyTo( out_roi );
+    }
     if (draw_borders)
       cv::rectangle(out, roi, border_color, 1);
   } // end loop img_idx
