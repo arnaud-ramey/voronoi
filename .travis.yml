@@ -1,0 +1,14 @@
+# travis rules for project
+language: cpp
+compiler:
+  - gcc
+
+before_install:
+  # install deps
+  - sudo apt-get install -y  libopencv-dev libgtest-dev
+
+script: # compile
+  - mkdir build
+  - cd build
+  - cmake ..
+  - make

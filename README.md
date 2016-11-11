@@ -1,5 +1,7 @@
 # voronoi
 
+[![Build Status](https://travis-ci.org/arnaud-ramey/voronoi.svg)](https://travis-ci.org/arnaud-ramey/voronoi)
+
 The morphological skeleton of an image is the set of its non-zero pixels which are equidistant to its boundaries.
 More info on [Wikipedia](http://en.wikipedia.org/wiki/Topological_skeleton).
 
@@ -38,6 +40,7 @@ Dependencies
 You need the following libraries before compiling :
 
   * cmake  ( ```$ sudo apt-get install cmake``` ),
+  * GTest  ( ```$ sudo apt-get install gtest-dev``` ),
   * OpenCV ( ```$ sudo apt-get install libopencv-dev``` )
 
 How to build the program
