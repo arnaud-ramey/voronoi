@@ -1,6 +1,7 @@
 build
 CMakeLists.txt.user
 voronoi_.cpp
+.vscode
 *.pyc
 *.pyd
 *.dll
