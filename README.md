@@ -1,7 +1,7 @@
 # voronoi
 This fork of the project includes a python wrapper performing basic thinning operation.
 This wrapper is based on cython. I am sure that it can be wrapped in a more efficient way.
-I was just playing araund the code, and this is what i got :)
+I was just playing around the code, and this is what i got :)
 
 To build python module cd into src folder and type:
 ```python setup.py build_ext --inplace```
