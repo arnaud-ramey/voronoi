@@ -1,7 +1,7 @@
 #include <opencv2/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
-#include "voronoi.h"
+#include "../voronoi.h"
 #include <string>
 #include <vector>
 #include <iostream>
