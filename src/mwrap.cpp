@@ -8,7 +8,18 @@
 
 VoronoiThinner thinner;
 
-std::vector<unsigned char> _thin(unsigned char *data,
+void _thinFast(unsigned char *data,
+                                int h,
+                                int w,
+                                const std::string & implementation_name){
+    cv::Mat img(h, w, CV_8UC1, data);
+    
+    thinner.thin(img, implementation_name, false);
+    
+    memcpy(data, thinner.get_skeleton().data, h*w * sizeof *thinner.get_skeleton().data); 
+}
+
+std::vector<unsigned char> _thinSlower(unsigned char *data,
                                 int h,
                                 int w,
                                 const std::string & implementation_name){

@@ -1,7 +1,12 @@
 #include <string>
 #include <vector>
 
-std::vector<unsigned char> _thin(unsigned char *data,
+void _thinFast(unsigned char *data,
+                                int h,
+                                int w,
+                                const std::string & implementation_name);
+
+std::vector<unsigned char> _thinSlower(unsigned char *data,
                                 int h,
                                 int w,
                                 const std::string & implementation_name);

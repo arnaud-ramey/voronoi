@@ -7,13 +7,23 @@ from libcpp.string cimport string
 from libcpp.vector cimport vector
 
 cdef extern from "mwrap.h":
-    vector[unsigned char] _thin(unsigned char* array, int m, int n, string imp_name)
+    void _thinFast(unsigned char* array, int m, int n, string imp_name)
+    vector[unsigned char] _thinSlower(unsigned char* array, int m, int n, string imp_name)
 
+# returns None, modifies source array
 @cython.boundscheck(False)
 @cython.wraparound(False)
-def thin(np.ndarray[np.uint8_t, ndim=2, mode="c"] nummat, string imp_name):
+def thinFast(np.ndarray[np.uint8_t, ndim=2, mode="c"] nummat, string imp_name):
     r = nummat.shape[0]
     c = nummat.shape[1]
-    data = _thin(&nummat[0,0], r, c, imp_name) 
+    _thinFast(&nummat[0,0], r, c, imp_name) 
+
+# returns numpy array
+@cython.boundscheck(False)
+@cython.wraparound(False)
+def thinSlow(np.ndarray[np.uint8_t, ndim=2, mode="c"] nummat, string imp_name):
+    r = nummat.shape[0]
+    c = nummat.shape[1]
+    data = _thinSlower(&nummat[0,0], r, c, imp_name) 
     ndt = np.array(data, dtype=np.uint8).reshape((r,c))
     return ndt
