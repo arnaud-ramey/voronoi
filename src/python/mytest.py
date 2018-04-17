@@ -8,7 +8,6 @@ Created on Sat Apr 14 00:24:57 2018
 import numpy as np
 import pylab as pl
 from skimage.io import imread
-from skimage.color import rgb2gray, rgb2hsv
 from scipy import ndimage as ndi
 import time
 import voronoi
@@ -23,9 +22,8 @@ At the end, I am a python lover: Explicit is better than implicit :)
 
 imrgb = imread('p1.jpg'); pl.figure(); pl.imshow(imrgb)
 
-imhsv = rgb2hsv(imrgb)
-hcomp = imrgb[:,:,0]
-binary = (50 < hcomp) & (hcomp < 165)
+r = imrgb[:,:,0]
+binary = (50 < r) & (r < 165)
 im_filled = ndi.binary_fill_holes(binary).astype(np.uint8)
 
 #im_filled = im_filled  * 255
