@@ -24,8 +24,8 @@ im_filled = ndi.binary_fill_holes(binary).astype(np.uint8)
 
 
 start_time = time.time()
-#voronoi.thinFast(im_filled, "guo_hall_fast") # returns None, modifies the source array
-im_filled = voronoi.thinSlow(im_filled, "guo_hall_fast") # returns a numpy array
+voronoi.thinFast(im_filled, "guo_hall_fast") # returns None, modifies the source array
+#im_filled = voronoi.thinSlow(im_filled, "guo_hall_fast") # returns a numpy array
 print("--- %s seconds ---" % (time.time() - start_time))
 
 pl.figure(); pl.imshow(im_filled)
