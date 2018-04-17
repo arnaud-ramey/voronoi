@@ -1,12 +1,12 @@
 #include <string>
-#include <vector>
+#include <valarray>
 
-void _thinFast(unsigned char *data,
+void _thinImplicit(unsigned char *data,
                                 int h,
                                 int w,
                                 const std::string & implementation_name);
 
-std::vector<unsigned char> _thinSlower(unsigned char *data,
+std::valarray<unsigned char> _thinExplicit(unsigned char *data,
                                 int h,
                                 int w,
                                 const std::string & implementation_name);

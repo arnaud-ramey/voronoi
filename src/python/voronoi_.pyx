@@ -1,29 +1,40 @@
 import numpy as np
 cimport numpy as np
 import cython
-import ctypes
 
 from libcpp.string cimport string
 from libcpp.vector cimport vector
 
+cdef extern from "<valarray>" namespace "std":
+    cdef cppclass valarray[T]:
+        valarray()
+        valarray(unsigned char)
+        T& operator[](unsigned char)
+
 cdef extern from "mwrap.h":
-    void _thinFast(unsigned char* array, int m, int n, string imp_name)
-    vector[unsigned char] _thinSlower(unsigned char* array, int m, int n, string imp_name)
+    void _thinImplicit(unsigned char* array, int m, int n, string imp_name)
+    valarray[unsigned char] _thinExplicit(unsigned char* array, int m, int n, string imp_name)
 
 # returns None, modifies source array
 @cython.boundscheck(False)
 @cython.wraparound(False)
-def thinFast(np.ndarray[np.uint8_t, ndim=2, mode="c"] nummat, string imp_name):
-    r = nummat.shape[0]
-    c = nummat.shape[1]
-    _thinFast(&nummat[0,0], r, c, imp_name) 
+cpdef thinImplicit(np.ndarray[np.uint8_t, ndim=2, mode="c"] nummat, string imp_name):
+    cdef int r = nummat.shape[0]
+    cdef int c = nummat.shape[1]
+    _thinImplicit(&nummat[0,0], r, c, imp_name) 
 
 # returns numpy array
 @cython.boundscheck(False)
 @cython.wraparound(False)
-def thinSlow(np.ndarray[np.uint8_t, ndim=2, mode="c"] nummat, string imp_name):
-    r = nummat.shape[0]
-    c = nummat.shape[1]
-    data = _thinSlower(&nummat[0,0], r, c, imp_name) 
-    ndt = np.array(data, dtype=np.uint8).reshape((r,c))
-    return ndt
+cpdef thinExplicit(np.ndarray[np.uint8_t, ndim=2, mode="c"] nummat, string imp_name):
+    cdef int r = nummat.shape[0]
+    cdef int c = nummat.shape[1]
+    cdef int i = 0
+    cdef msize = r*c;
+    cdef valarray[unsigned char] v = _thinExplicit(&nummat[0,0], r, c, imp_name)
+    cdef unsigned char[:] ndt =  np.empty(msize, dtype=np.uint8)
+
+    for i in range(msize):
+        ndt[i] = v[i]
+    
+    return np.asarray(ndt).reshape((r,c))

@@ -3,12 +3,11 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include "../voronoi.h"
 #include <string>
-#include <vector>
-#include <iostream>
+#include <valarray>
 
 VoronoiThinner thinner;
 
-void _thinFast(unsigned char *data,
+void _thinImplicit(unsigned char *data,
                                 int h,
                                 int w,
                                 const std::string & implementation_name){
@@ -19,7 +18,7 @@ void _thinFast(unsigned char *data,
     memcpy(data, thinner.get_skeleton().data, h*w * sizeof *thinner.get_skeleton().data); 
 }
 
-std::vector<unsigned char> _thinSlower(unsigned char *data,
+std::valarray<unsigned char> _thinExplicit(unsigned char *data,
                                 int h,
                                 int w,
                                 const std::string & implementation_name){
@@ -27,9 +26,7 @@ std::vector<unsigned char> _thinSlower(unsigned char *data,
     
     thinner.thin(img, implementation_name, false);
     
-    std::vector<unsigned char> vtor;
+    std::valarray<unsigned char> varray (thinner.get_skeleton().data, h*w);
     
-    vtor.assign(thinner.get_skeleton().data, thinner.get_skeleton().data + h*w);
-    
-    return vtor;
+    return varray;
 }
