@@ -27,10 +27,9 @@ std::vector<unsigned char> _thinSlower(unsigned char *data,
     
     thinner.thin(img, implementation_name, false);
     
-    cv::Mat skel(h, w, CV_8UC1, thinner.get_skeleton().data);
     std::vector<unsigned char> vtor;
     
-    vtor.assign(skel.data, skel.data + h*w);
+    vtor.assign(thinner.get_skeleton().data, thinner.get_skeleton().data + h*w);
     
     return vtor;
 }
