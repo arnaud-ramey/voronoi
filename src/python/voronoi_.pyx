@@ -30,7 +30,7 @@ cpdef thinExplicit(np.ndarray[np.uint8_t, ndim=2, mode="c"] nummat, string imp_n
     cdef int r = nummat.shape[0]
     cdef int c = nummat.shape[1]
     cdef int i = 0
-    cdef msize = r*c;
+    cdef int msize = r*c;
     cdef valarray[unsigned char] v = _thinExplicit(&nummat[0,0], r, c, imp_name)
     cdef unsigned char[:] ndt =  np.empty(msize, dtype=np.uint8)
 
