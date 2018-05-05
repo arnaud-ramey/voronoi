@@ -17,7 +17,7 @@ cdef extern from "mwrap.h":
 # returns None, modifies source array
 @cython.boundscheck(False)
 @cython.wraparound(False)
-cpdef thinImplicit(np.ndarray[np.uint8_t, ndim=2, mode="c"] nummat, string imp_name):
+cpdef void thinImplicit(np.ndarray[np.uint8_t, ndim=2, mode="c"] nummat, string imp_name):
     cdef int r = nummat.shape[0]
     cdef int c = nummat.shape[1]
     _thinImplicit(&nummat[0,0], r, c, imp_name) 
