@@ -1,3 +1,4 @@
+#cython: boundscheck=False, wraparound=False, nonecheck=False
 import numpy as np
 cimport numpy as np
 import cython
@@ -15,16 +16,12 @@ cdef extern from "mwrap.h":
     valarray[unsigned char] _thinExplicit(unsigned char* array, int m, int n, string imp_name)
 
 # returns None, modifies source array
-@cython.boundscheck(False)
-@cython.wraparound(False)
 cpdef void thinImplicit(np.ndarray[np.uint8_t, ndim=2, mode="c"] nummat, string imp_name):
     cdef int r = nummat.shape[0]
     cdef int c = nummat.shape[1]
     _thinImplicit(&nummat[0,0], r, c, imp_name) 
 
 # returns numpy array
-@cython.boundscheck(False)
-@cython.wraparound(False)
 cpdef np.ndarray[np.uint8_t, ndim=2, mode="c"] thinExplicit(np.ndarray[np.uint8_t, ndim=2, mode="c"] nummat, string imp_name):
     cdef int r = nummat.shape[0]
     cdef int c = nummat.shape[1]
