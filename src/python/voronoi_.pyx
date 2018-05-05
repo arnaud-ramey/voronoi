@@ -25,7 +25,7 @@ cpdef thinImplicit(np.ndarray[np.uint8_t, ndim=2, mode="c"] nummat, string imp_n
 # returns numpy array
 @cython.boundscheck(False)
 @cython.wraparound(False)
-cpdef thinExplicit(np.ndarray[np.uint8_t, ndim=2, mode="c"] nummat, string imp_name):
+cpdef np.ndarray[np.uint8_t, ndim=2, mode="c"] thinExplicit(np.ndarray[np.uint8_t, ndim=2, mode="c"] nummat, string imp_name):
     cdef int r = nummat.shape[0]
     cdef int c = nummat.shape[1]
     cdef int i = 0
