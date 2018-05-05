@@ -3,7 +3,6 @@ cimport numpy as np
 import cython
 
 from libcpp.string cimport string
-from libcpp.vector cimport vector
 
 cdef extern from "<valarray>" namespace "std":
     cdef cppclass valarray[T]:
