@@ -47,7 +47,7 @@ Dependencies
 You need the following libraries before compiling :
 
   * cmake  ( ```$ sudo apt-get install cmake``` ),
-  * GTest  ( ```$ sudo apt-get install gtest-dev``` ),
+  * GTest  ( ```$ sudo apt-get install libgtest-dev``` ),
   * OpenCV ( ```$ sudo apt-get install libopencv-dev``` )
 
 How to build the program
