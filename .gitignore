@@ -1,2 +1,10 @@
 build
 CMakeLists.txt.user
+voronoi_.cpp
+.vscode
+.idea
+*.pyc
+*.pyd
+*.dll
+*.so
+src/python/build

@@ -1,4 +1,11 @@
 # voronoi
+This fork of the project includes a python wrapper performing basic thinning operation.
+This wrapper is based on cython. I am sure that it can be wrapped in a more efficient way.
+I was just playing around the code, and this is what i got :)
+
+To build this python module, cd into src/python folder, set your opencv include and lib paths in setup.py and type:
+```python setup.py build_ext --inplace```
+Take a look at mytest.py for usage. Have fun!
 
 [![Build Status](https://travis-ci.org/arnaud-ramey/voronoi.svg)](https://travis-ci.org/arnaud-ramey/voronoi)
 
@@ -40,7 +47,7 @@ Dependencies
 You need the following libraries before compiling :
 
   * cmake  ( ```$ sudo apt-get install cmake``` ),
-  * GTest  ( ```$ sudo apt-get install gtest-dev``` ),
+  * GTest  ( ```$ sudo apt-get install libgtest-dev``` ),
   * OpenCV ( ```$ sudo apt-get install libopencv-dev``` )
 
 How to build the program
