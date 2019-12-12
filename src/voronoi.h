@@ -295,7 +295,7 @@ protected:
   bool thin_morph(const cv::Mat1b & img,
                   bool crop_img_before = true,
                   int max_iters = NOLIMIT) {
-    cv::threshold(img, temp, 10, 1, CV_THRESH_BINARY);
+    cv::threshold(img, temp, 10, 1, cv::THRESH_BINARY);
     _bbox  = copy_bounding_box_plusone(temp, img_copy, crop_img_before);
 
     skel.create(img_copy.size());
@@ -316,7 +316,7 @@ protected:
         break;
     }
     //printf("niters:%i\n", niters);
-    cv::threshold(skel, skel, 0.5, 255, CV_THRESH_BINARY);
+    cv::threshold(skel, skel, 0.5, 255, cv::THRESH_BINARY);
     _has_converged = done;
     return true;
   } // end from_img();
@@ -333,7 +333,7 @@ protected:
                                 bool crop_img_before = true,
                                 int max_iters = NOLIMIT) {
     // im /= 255;
-    cv::threshold(img, temp, 10, 1, CV_THRESH_BINARY);
+    cv::threshold(img, temp, 10, 1, cv::THRESH_BINARY);
     _bbox  = copy_bounding_box_plusone(temp, skel, crop_img_before);
 
     cv::Mat prev = cv::Mat::zeros(skel.size(), CV_8UC1);
@@ -368,7 +368,7 @@ protected:
                        int max_iters = NOLIMIT) {
     //im /= 255;
     // marker values need to be 0 or 1 for multiplications of values to make sense
-    cv::threshold(img, temp, 10, 1, CV_THRESH_BINARY);
+    cv::threshold(img, temp, 10, 1, cv::THRESH_BINARY);
     _bbox  = copy_bounding_box_plusone(temp, skel, crop_img_before);
 
 
@@ -408,7 +408,7 @@ protected:
                               bool crop_img_before = true,
                               int max_iters = NOLIMIT) {
     // skel /= 255;
-    cv::threshold(img, temp, 10, 1, CV_THRESH_BINARY);
+    cv::threshold(img, temp, 10, 1, cv::THRESH_BINARY);
     _bbox  = copy_bounding_box_plusone(temp, skel, crop_img_before);
 
     cv::Mat prev = cv::Mat::zeros(skel.size(), CV_8UC1);
@@ -442,7 +442,7 @@ protected:
                      bool crop_img_before = true,
                      int max_iters = NOLIMIT) {
     //im /= 255;
-    cv::threshold(img, temp, 10, 1, CV_THRESH_BINARY);
+    cv::threshold(img, temp, 10, 1, cv::THRESH_BINARY);
     _bbox  = copy_bounding_box_plusone(temp, skel, crop_img_before);
 
     int niters = 0;

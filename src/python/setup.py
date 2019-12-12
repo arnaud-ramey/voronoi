@@ -18,11 +18,11 @@ from distutils.extension import Extension
 from Cython.Distutils import build_ext
 import numpy
 
-opencv_include_dir = 'D:/opencv/build/include'
+opencv_include_dir = 'D:/opencv4_dev/Install/opencv/include'
 #opencv_include_dir = '/usr/local/include' # use this one if needed
-opencv_lib_dir = 'D:/opencv/build/x64/vc15/lib'
+opencv_lib_dir = 'D:/opencv4_dev/Install/opencv/x64/vc15/lib'
 #opencv_lib_dir = '/usr/local/lib' # use this one if needed
-opencv_libs = ['opencv_world341']
+opencv_libs = ['opencv_world410']
 #opencv_libs = ['opencv_core', 'opencv_highgui', 'opencv_imgproc'] # use this one if needed
 
 setup(
